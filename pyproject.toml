@@ -1,0 +1,16 @@
+[project]
+name = "bili2handout"
+version = "0.1.0"
+description = "把 B 站博主的系列视频，经本地转写与 AI Agent 提炼，变成一份 LaTeX 观点讲义"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "yt-dlp>=2024.1.0",
+    "faster-whisper>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = ["ruff"]
+
+[tool.uv]
+package = false

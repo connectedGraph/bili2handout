@@ -1,0 +1,25 @@
+# 语料与工作目录（含他人音频/转写，不入库）
+work/
+audio/
+transcripts/
+corpus/
+models/
+.venv/
+__pycache__/
+
+# LaTeX 构建产物
+*.aux
+*.toc
+*.out
+*.log
+*.fls
+*.fdb_lk
+*.synctex.gz
+*.bbl
+*.blg
+*.lof
+*.lot
+preview/
+
+# 但保留实例 PDF 与模板本身
+!examples/**/*.pdf

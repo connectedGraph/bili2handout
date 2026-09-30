@@ -1,0 +1,141 @@
+% !TEX program = xelatex
+% 编译方式：xelatex main.tex （连续编译两次以生成目录；建议用 latexmk -xelatex）
+% 依赖宏包：ctex / xeCJK / tcolorbox / enumitem / booktabs / array / colortbl / xcolor / fancyhdr / hyperref
+
+\documentclass[UTF8,a4paper,12pt,fontset=windows]{ctexart}
+
+% ---------- 页面与行距 ----------
+\usepackage[a4paper,left=2.6cm,right=2.6cm,top=3.0cm,bottom=3.2cm]{geometry}
+\renewcommand{\baselinestretch}{1.32}
+\setlength{\parskip}{0.2em}
+
+% ---------- 中文字体 ----------
+\setCJKfamilyfont{yahei}{Microsoft YaHei}
+\newcommand{\yh}{\CJKfamily{yahei}}
+
+% ---------- 常用宏包 ----------
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\setlength{\tabcolsep}{4pt}
+\emergencystretch=3em
+\raggedbottom
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=teal,urlcolor=teal]{hyperref}
+
+% ---------- 配色 ----------
+\definecolor{ink}{RGB}{40,44,52}
+\definecolor{teal}{RGB}{15,84,96}
+\definecolor{clay}{RGB}{186,98,74}
+\definecolor{mist}{RGB}{243,246,244}
+
+% ---------- 章节标题 ----------
+\ctexset{
+  part = {
+    format = {\centering\yh\huge\bfseries\color{teal}},
+    aftertitle = {\par\vspace{4pt}{\color{clay}\rule{0.4\linewidth}{1.4pt}}\par},
+    beforeskip = {3em},
+    afterskip = {2em},
+  },
+  section = {
+    format = {\yh\Large\bfseries\color{teal}},
+    beforeskip = {2.4em},
+    afterskip = {0.8em},
+  },
+  subsection = {
+    format = {\yh\normalsize\bfseries\color{ink}},
+    beforeskip = {1.6em},
+    afterskip = {0.5em},
+  },
+  subsubsection = {
+    format = {\yh\normalsize\bfseries\color{ink}},
+    beforeskip = {1.2em},
+    afterskip = {0.4em},
+  },
+}
+
+% ---------- 自定义组件 ----------
+% 核心洞察框
+\newtcolorbox{insight}{
+  breakable, enhanced,
+  colback=mist, colframe=teal, boxrule=0.8pt,
+  arc=1.5mm, left=2.2mm, right=2.2mm, top=1.6mm, bottom=1.6mm,
+  before skip=6pt, after skip=8pt
+}
+% 提醒 / 边界框
+\newtcolorbox{notehot}{
+  breakable, enhanced,
+  colback=white, colframe=clay, boxrule=0.8pt,
+  arc=1.5mm, left=2.2mm, right=2.2mm, top=1.6mm, bottom=1.6mm,
+  before skip=6pt, after skip=8pt
+}
+% 清单环境（□ 复选框）
+\newenvironment{checklist}
+  {\begin{itemize}[leftmargin=2em,itemsep=1.5pt,topsep=3pt,label={$\square$}]}
+  {\end{itemize}}
+% 术语强调
+\newcommand{\term}[1]{\textbf{\color{teal}#1}}
+% 核心一句
+\newcommand{\key}[1]{\par\vspace{2pt}\noindent\textcolor{teal}{\textbf{核心一句：}}#1\par\vspace{4pt}}
+
+% ---------- 页眉页脚 ----------
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{16pt}
+\fancyhead[L]{\small\yh\color{ink}最舒适的认知：ADHD 自救讲义}
+\fancyhead[R]{\small\yh\color{ink}\leftmark}
+\fancyfoot[C]{\small\color{ink}\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\hypersetup{pdftitle={最舒适的认知：ADHD 自救讲义},pdfauthor={自我交付版}}
+
+\begin{document}
+
+% ---------- 封面 ----------
+\begin{titlepage}
+  \centering
+  \vspace*{2.2cm}
+  {\yh\Huge\bfseries\color{teal} 最舒适的认知\par}
+  \vspace{0.5em}
+  {\yh\LARGE\bfseries\color{ink} ADHD 自救讲义\par}
+  \vspace{1.8em}
+  {\large\color{ink} 从学历上层到学历中下层\par}
+  {\large\color{ink} 习惯 · 成因 · 方法论 · 思考\par}
+  \vspace{2.8cm}
+  {\color{ink} 思想内核提炼自 B 站「阿卡迪萨 · ADHD 野路子」系列 24 期视频\par}
+  {\color{ink} 在其自成一派的猜想之上，延伸为一份完整的认知与自救讲义\par}
+  \vfill
+  {\large 2026 年 \quad 自我交付版\par}
+  \vspace{1.5cm}
+  {\color{clay} 写给每一个觉得自己「明明可以，却总做不到」的人\par}
+\end{titlepage}
+
+% ---------- 目录 ----------
+\pagestyle{empty}
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+\pagestyle{fancy}
+\pagenumbering{arabic}
+
+% ---------- 正文 ----------
+\input{chapters/ch00}
+\input{chapters/ch01}
+\input{chapters/ch02}
+\input{chapters/ch03}
+\input{chapters/ch04}
+\input{chapters/ch05}
+\input{chapters/ch06}
+\input{chapters/ch07}
+\input{chapters/ch08}
+\input{chapters/ch09}
+\input{chapters/ch10}
+\input{chapters/ch11}
+\input{chapters/appendix}
+
+\end{document}
